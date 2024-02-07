@@ -1,0 +1,56 @@
+---
+title: "Untitled"
+format: html
+---
+```{python}
+pip install seaborn
+```
+
+```{python}
+from ucimlrepo import fetch_ucirepo 
+  
+# fetch dataset 
+cdc_diabetes_health_indicators = fetch_ucirepo(id=891) 
+  
+# data (as pandas dataframes) 
+X = cdc_diabetes_health_indicators.data.features 
+y = cdc_diabetes_health_indicators.data.targets 
+  
+# metadata 
+print(cdc_diabetes_health_indicators.metadata) 
+  
+# variable information 
+print(cdc_diabetes_health_indicators.variables) 
+```
+
+```{python}
+X.describe()
+```
+
+```{python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+
+df = pd.concat([X,y],axis=1)
+```
+
+```{python}
+correlation_matrix = df.corr()
+top_columns = correlation_matrix['Diabetes_binary'].sort_values(ascending=False).head(5).index
+print(top_columns)
+sns.heatmap(df[top_columns].corr(), annot=True, cmap='coolwarm')
+plt.title('Top 5 Columns Correlation Heatmap')
+plt.show()
+```
+
+```{python}
+correlation_matrix = df.corr()
+top_columns_inverse = correlation_matrix['Diabetes_binary'].sort_values(ascending=True).head(4).index
+top_columns_inverse = top_columns_inverse.append(pd.Index(['Diabetes_binary']))
+print(top_columns_inverse)
+sns.heatmap(df[top_columns_inverse].corr(), annot=True, cmap='coolwarm')
+plt.title('Top 5 Columns With Inverse Correlation Heatmap')
+plt.show()
+``` 
+
