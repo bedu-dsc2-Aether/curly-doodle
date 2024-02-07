@@ -3,7 +3,11 @@ title: "Untitled"
 format: html
 ---
 ```{python}
-pip install seaborn
+#pip install seaborn
+```
+
+```{python}
+#pip install ucimlrepo
 ```
 
 ```{python}
@@ -32,7 +36,89 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
-df = pd.concat([X,y],axis=1)
+X = pd.concat([X,y],axis=1)
+X.shape
+X = X[X.Diabetes_binary==1]
+X.shape
+```
+
+```{r}
+install.packages("pacman")
+pacman::p_load(reticulate)
+```
+
+```{r}
+library(reticulate)
+hist(py$X$Age,
+    breaks = 20,
+    main = " Histograma de Edad",
+    ylab = "Y",
+    xlab = "X", 
+    col = "blue")
+```
+
+Las personas mayores a la media son propensas a diabetes.
+```{r}
+x <- seq(-3, 3, length = 100) * sd(py$X$Age) + mean(py$X$Age)
+y <- dnorm(x, mean = mean(py$X$Age), sd = sd(py$X$Age))
+
+plot(x, y, type = "l", xlab="", ylab="")
+title(main = "Densidad de Probabilidad Normal", sub = expression(paste(mu == mean(py$X$Age), " y ", sigma == 1)))
+polygon(c(11, x[x>=11], max(x)), c(0, y[x>=11], 0), col="blue")
+```
+
+```{r}
+media <- mean(py$X$Age)
+ds <- sd(py$X$Age)
+n <- length(py$X$Age)
+error <- qnorm(0.975)*ds/sqrt(n)
+izq <- media-error
+der <- media+error
+
+print(paste("Límite inferior del intervalo de confianza 97.5%:  ",izq, sep=""))
+print(paste("Límite superior del intervalo de confianza 97.5%:  ",der, sep=""))
+```
+
+Con una confianza del 97.5% se concluye que la hipotesis se rechaza.
+Un paciente que se encuentra en la categoria 11 o mayor no tiene un diagnostico de diabetes.
+
+```{r}
+library(ggplot2)
+library(scales)
+
+# Define the parameters for the beta distribution
+alpha <- 5
+beta <- 2
+
+# Generate x values
+x <- seq(0, 1, length.out = 100)
+
+# Calculate the beta function
+beta_function <- dbeta(x, alpha, beta)
+
+# Create a data frame for plotting
+data <- data.frame(x = x, beta_function = beta_function)
+
+# Plot the beta function
+ggplot(data, aes(x = x, y = beta_function)) +
+    geom_line() +
+    labs(x = "X", y = "Beta Function") +
+    scale_x_continuous(labels = percent_format()) +
+    ggtitle("Beta Function for py$X$Age")
+
+```
+
+```{python}
+from scipy.stats import beta
+
+# Define the parameters for the beta distribution
+alpha = 5
+Beta = 2
+
+# Apply beta to py$X$Age
+py_X_Age_beta = beta.pdf(X['Age'], alpha, Beta)
+sns.relplot(x = X['Age'], y = py_X_Age_beta)
+plt.show()
 ```
 
 ```{python}
