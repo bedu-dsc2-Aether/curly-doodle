@@ -59,7 +59,13 @@ hist(py$X$Age,
     col = "blue")
 ```
 
-Las personas mayores a la media son propensas a diabetes.
+Con base en la gráfica podemos decir que la variable edad tiene una distribución normal con una media aproximada a la categoría 11.
+
+Por lo que queremos demostrar que las personas mayores a la media son propensas a diabetes.
+
+---
+
+Hipotesis h0 = pacientes con diagnostico de diabetes tienen una edad mayor o igual a la categoría 11.
 
 ```{r}
 x <- seq(-3, 3, length = 100) * sd(py$X$Age) + mean(py$X$Age)

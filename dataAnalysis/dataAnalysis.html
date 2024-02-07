@@ -206,7 +206,10 @@ max         1.000000       1.000000  ...       6.000000       8.000000
 </div>
 </div>
 </div>
-<p>Las personas mayores a la media son propensas a diabetes.</p>
+<p>Con base en la gráfica podemos decir que la variable edad tiene una distribución normal con una media aproximada a la categoría 11.</p>
+<p>Por lo que queremos demostrar que las personas mayores a la media son propensas a diabetes.</p>
+<hr>
+<p>Hipotesis h0 = pacientes con diagnostico de diabetes tienen una edad mayor o igual a la categoría 11.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length =</span> <span class="dv">100</span>) <span class="sc">*</span> <span class="fu">sd</span>(py<span class="sc">$</span>X<span class="sc">$</span>Age) <span class="sc">+</span> <span class="fu">mean</span>(py<span class="sc">$</span>X<span class="sc">$</span>Age)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="fu">mean</span>(py<span class="sc">$</span>X<span class="sc">$</span>Age), <span class="at">sd =</span> <span class="fu">sd</span>(py<span class="sc">$</span>X<span class="sc">$</span>Age))</span>
