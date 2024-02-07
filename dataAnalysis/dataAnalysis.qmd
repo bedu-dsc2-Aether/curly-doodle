@@ -1,7 +1,8 @@
 ---
-title: "Untitled"
+title: "Data Analysis Modulo 5"
 format: html
 ---
+
 ```{python}
 #pip install seaborn
 ```
@@ -36,6 +37,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
+df = pd.concat([X,y],axis=1)
 X = pd.concat([X,y],axis=1)
 X.shape
 X = X[X.Diabetes_binary==1]
@@ -58,6 +60,7 @@ hist(py$X$Age,
 ```
 
 Las personas mayores a la media son propensas a diabetes.
+
 ```{r}
 x <- seq(-3, 3, length = 100) * sd(py$X$Age) + mean(py$X$Age)
 y <- dnorm(x, mean = mean(py$X$Age), sd = sd(py$X$Age))
@@ -79,46 +82,45 @@ print(paste("Límite inferior del intervalo de confianza 97.5%:  ",izq, sep=""))
 print(paste("Límite superior del intervalo de confianza 97.5%:  ",der, sep=""))
 ```
 
-Con una confianza del 97.5% se concluye que la hipotesis se rechaza.
-Un paciente que se encuentra en la categoria 11 o mayor no tiene un diagnostico de diabetes.
+Con una confianza del 97.5% se concluye que la hipotesis se rechaza. Un paciente que se encuentra en la categoria 11 o mayor no tiene un diagnostico de diabetes.
 
 ```{r}
-library(ggplot2)
-library(scales)
+# library(ggplot2)
+# library(scales)
 
-# Define the parameters for the beta distribution
-alpha <- 5
-beta <- 2
+# # Define the parameters for the beta distribution
+# alpha <- 5
+# beta <- 2
 
-# Generate x values
-x <- seq(0, 1, length.out = 100)
+# # Generate x values
+# x <- seq(0, 1, length.out = 100)
 
-# Calculate the beta function
-beta_function <- dbeta(x, alpha, beta)
+# # Calculate the beta function
+# beta_function <- dbeta(x, alpha, beta)
 
-# Create a data frame for plotting
-data <- data.frame(x = x, beta_function = beta_function)
+# # Create a data frame for plotting
+# data <- data.frame(x = x, beta_function = beta_function)
 
-# Plot the beta function
-ggplot(data, aes(x = x, y = beta_function)) +
-    geom_line() +
-    labs(x = "X", y = "Beta Function") +
-    scale_x_continuous(labels = percent_format()) +
-    ggtitle("Beta Function for py$X$Age")
+# # Plot the beta function
+# ggplot(data, aes(x = x, y = beta_function)) +
+#     geom_line() +
+#     labs(x = "X", y = "Beta Function") +
+#     scale_x_continuous(labels = percent_format()) +
+#     ggtitle("Beta Function for py$X$Age")
 
 ```
 
 ```{python}
-from scipy.stats import beta
+# from scipy.stats import beta
 
-# Define the parameters for the beta distribution
-alpha = 5
-Beta = 2
+# # Define the parameters for the beta distribution
+# alpha = 5
+# Beta = 2
 
-# Apply beta to py$X$Age
-py_X_Age_beta = beta.pdf(X['Age'], alpha, Beta)
-sns.relplot(x = X['Age'], y = py_X_Age_beta)
-plt.show()
+# # Apply beta to py$X$Age
+# py_X_Age_beta = beta.pdf(X['Age'], alpha, Beta)
+# sns.relplot(x = X['Age'], y = py_X_Age_beta)
+# plt.show()
 ```
 
 ```{python}
@@ -138,5 +140,4 @@ print(top_columns_inverse)
 sns.heatmap(df[top_columns_inverse].corr(), annot=True, cmap='coolwarm')
 plt.title('Top 5 Columns With Inverse Correlation Heatmap')
 plt.show()
-``` 
-
+```
