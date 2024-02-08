@@ -4,7 +4,9 @@ datascience
 otter-grader
 numpy
 pandas
+seaborn
 scipy
+ucimlrepo
 folium>=0.9.1
 matplotlib
 ipywidgets>=7.0.0
