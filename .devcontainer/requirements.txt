@@ -7,6 +7,9 @@ pandas
 seaborn
 scipy
 ucimlrepo
+lxml
+html5lib
+BeautifulSoup4
 folium>=0.9.1
 matplotlib
 ipywidgets>=7.0.0
