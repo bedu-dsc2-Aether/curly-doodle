@@ -37,7 +37,11 @@
 				"ms-python.python",
 				"ms-python.vscode-pylance",
 				"vsls-contrib.codetour",
-				"GitHub.copilot"
+				"GitHub.copilot",
+				"donjayamanne.python-environment-manager",
+				"vscode-icons-team.vscode-icons",
+				"Posit.shinyuieditor",
+				"Posit.shiny-python"
 			]
 		}
 	},

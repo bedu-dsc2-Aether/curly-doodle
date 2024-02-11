@@ -17,6 +17,7 @@ RUN install2.r --error --skipinstalled -n -1 \
         nnet \
         kernlab \
         plotly \
+        hrbrthemes \
         reticulate \
         factoextra \
         cluster \
