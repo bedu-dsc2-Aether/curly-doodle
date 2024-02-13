@@ -6,6 +6,7 @@ numpy
 pandas
 seaborn
 scipy
+pyarrow
 ucimlrepo
 lxml
 html5lib
