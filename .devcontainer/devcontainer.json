@@ -41,7 +41,8 @@
 				"donjayamanne.python-environment-manager",
 				"vscode-icons-team.vscode-icons",
 				"Posit.shinyuieditor",
-				"Posit.shiny-python"
+				"Posit.shiny-python",
+				"MS-vsliveshare.vsliveshare"
 			]
 		}
 	},
