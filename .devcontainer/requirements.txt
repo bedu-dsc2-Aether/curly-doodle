@@ -20,3 +20,4 @@ okpy
 scikit-learn
 mysqlclient
 sqlalchemy
+mysql-connector-python
