@@ -4,6 +4,7 @@ datascience
 otter-grader
 numpy
 pandas
+notebook
 seaborn
 scipy
 pyarrow
